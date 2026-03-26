@@ -1,4 +1,6 @@
-/* cards-stats – stat-driven case study cards (Lumen style: no images, large stat numbers) */
+/* stylelint-disable no-descending-specificity -- card body and image target separate elements */
+
+/* cards-stats – stat-driven case study cards with hover image reveal */
 .cards-stats > ul {
   list-style: none;
   margin: 0;
@@ -9,19 +11,36 @@
 }
 
 .cards-stats > ul > li {
+  display: flex;
+  flex-direction: column;
   background: none;
   border: none;
   border-radius: 0;
   padding: 0;
+  position: relative;
 }
 
-/* hide card images – original Lumen stats section shows no images */
+/* card image – hidden by default, revealed on hover */
 .cards-stats .cards-stats-card-image {
   display: none;
+  line-height: 0;
+  overflow: hidden;
+  order: 2;
+  margin-top: var(--spacing-m);
+  position: relative;
+}
+
+.cards-stats .cards-stats-card-image img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
 }
 
 .cards-stats .cards-stats-card-body {
   padding: 0;
+  order: 1;
 }
 
 /* stat number – large display */
@@ -44,14 +63,27 @@
   color: var(--heading-color);
 }
 
+/* CTA link – hidden by default */
+.cards-stats .cards-stats-card-body > p:last-child {
+  display: none;
+}
+
 .cards-stats .cards-stats-card-body > p:last-child a {
-  font-weight: 500;
-  color: var(--link-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--heading-color);
+  background: #f58220;
+  padding: 10px 24px;
+  border-radius: 24px;
   text-decoration: none;
+  font-size: var(--body-font-size-s);
+  white-space: nowrap;
 }
 
 .cards-stats .cards-stats-card-body > p:last-child a:hover {
-  text-decoration: underline;
+  opacity: 0.9;
 }
 
 @media (width >= 600px) {
@@ -63,5 +95,28 @@
 @media (width >= 900px) {
   .cards-stats > ul {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards-stats .cards-stats-card-body > p:first-child {
+    font-size: 4.5rem;
+    transition: font-size 0.3s ease;
+  }
+
+  /* hover – reveal image below text, show CTA on image */
+  .cards-stats > ul > li:hover .cards-stats-card-image {
+    display: block;
+  }
+
+  .cards-stats > ul > li:hover .cards-stats-card-body > p:first-child {
+    font-size: 3.5rem;
+  }
+
+  .cards-stats > ul > li:hover .cards-stats-card-body > p:last-child {
+    display: block;
+    position: absolute;
+    bottom: var(--spacing-m);
+    left: var(--spacing-s);
+    z-index: 1;
+    margin: 0;
   }
 }
