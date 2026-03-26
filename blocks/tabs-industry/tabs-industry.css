@@ -1,9 +1,40 @@
-/* tabs-industry – industry selector with dropdown */
+/* tabs-industry – industry selector with dropdown + side-by-side layout */
 
-/* panel content paragraphs – base style before button overrides */
-.tabs-industry .tabs-industry-panel p {
-  color: rgb(255 255 255 / 85%);
-  margin-top: 0;
+.tabs-industry {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dark-color);
+  border-radius: 16px;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* ---------- image (left at desktop) ---------- */
+.tabs-industry .tabs-industry-image {
+  line-height: 0;
+}
+
+.tabs-industry .tabs-industry-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- content area ---------- */
+.tabs-industry .tabs-industry-content {
+  padding: var(--spacing-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+/* eyebrow */
+.tabs-industry .tabs-industry-eyebrow {
+  font-size: var(--body-font-size-xs);
+  color: rgb(255 255 255 / 70%);
+  letter-spacing: 0.05em;
+  text-transform: none;
 }
 
 /* ---------- dropdown ---------- */
@@ -11,7 +42,7 @@
   position: relative;
   width: 100%;
   max-width: 328px;
-  margin-bottom: var(--spacing-l);
+  margin-bottom: var(--spacing-m);
 }
 
 .tabs-industry .tabs-industry-dropdown-header {
@@ -82,7 +113,7 @@
   font-weight: 600;
 }
 
-/* ---------- tab panels ---------- */
+/* ---------- panels ---------- */
 .tabs-industry .tabs-industry-panel {
   padding: 0;
   border: none;
@@ -93,53 +124,56 @@
   display: none;
 }
 
-/* panel content – dark teal case study area */
+/* panel text content */
 .tabs-industry .tabs-industry-panel > div {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
-  background-color: var(--dark-color);
-  border-radius: 16px;
-  padding: var(--spacing-l);
-  color: #fff;
 }
 
-.tabs-industry .tabs-industry-panel img {
-  width: 100%;
-  border-radius: 12px;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-.tabs-industry .tabs-industry-panel p:first-child {
+.tabs-industry .tabs-industry-panel p {
+  color: rgb(255 255 255 / 85%);
   margin-top: 0;
 }
 
 .tabs-industry .tabs-industry-panel p:last-child a {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 2px solid rgb(255 255 255 / 60%);
+  border-radius: 30px;
   font-weight: 600;
   color: #fff;
+  text-decoration: none;
+  transition: background var(--transition-base), border-color var(--transition-base);
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 .tabs-industry .tabs-industry-panel p:last-child a:hover {
-  color: rgb(255 255 255 / 70%);
+  background: rgb(255 255 255 / 10%);
+  border-color: #fff;
 }
 
+/* ---------- desktop: side-by-side ---------- */
 @media (width >= 900px) {
-  .tabs-industry .tabs-industry-panel > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xs) var(--spacing-l);
+  .tabs-industry {
+    flex-direction: row;
   }
 
-  /* image spans full left column */
-  .tabs-industry .tabs-industry-panel > div > p:first-child {
-    grid-row: 1 / -1;
+  .tabs-industry .tabs-industry-image {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 
-  .tabs-industry .tabs-industry-panel img {
+  .tabs-industry .tabs-industry-image img {
     width: 100%;
-    max-width: 100%;
-    aspect-ratio: 3 / 4;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+  }
+
+  .tabs-industry .tabs-industry-content {
+    flex: 1 1 50%;
+    padding: var(--spacing-xl) var(--spacing-l);
+    justify-content: flex-start;
   }
 }
