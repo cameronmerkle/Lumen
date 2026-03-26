@@ -1,4 +1,21 @@
-/* cards-solutions – service category cards (used in dark sections) */
+/* cards-solutions – service category cards */
+
+/* section title styling */
+.cards-solutions-container .default-content-wrapper p {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--heading-color);
+  max-width: 541px;
+  margin-bottom: var(--spacing-l);
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- :has() pseudo-class intentionally after base p */
+.cards-solutions-container .default-content-wrapper p:has(img) {
+  display: none;
+}
+
 .cards-solutions > ul {
   list-style: none;
   margin: 0;
@@ -12,6 +29,7 @@
   border-radius: 16px;
   overflow: hidden;
   background-color: var(--background-color);
+  border: 1px solid #e0e0e0;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
@@ -35,24 +53,28 @@
 }
 
 .cards-solutions .cards-solutions-card-body h2 {
-  font-size: var(--heading-font-size-s);
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
   margin-top: 0;
   margin-bottom: var(--spacing-xs);
   color: var(--heading-color);
 }
 
+/* stylelint-disable-next-line no-descending-specificity -- scoped to card body, not container */
 .cards-solutions .cards-solutions-card-body p {
   color: var(--text-color);
+  font-size: var(--body-font-size-s);
   margin-bottom: var(--spacing-xs);
 }
 
 .cards-solutions .cards-solutions-card-body p:last-child a {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--link-color);
+  text-decoration: none;
 }
 
 .cards-solutions .cards-solutions-card-body p:last-child a:hover {
-  color: var(--accent-color);
+  text-decoration: underline;
 }
 
 @media (width >= 600px) {
@@ -65,4 +87,28 @@
   .cards-solutions > ul {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  .cards-solutions-container .default-content-wrapper p {
+    font-size: var(--heading-font-size-xl);
+  }
+}
+
+/* override dark section – original Lumen has white background */
+main .section.dark.cards-solutions-container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+main .section.dark.cards-solutions-container h1,
+main .section.dark.cards-solutions-container h2,
+main .section.dark.cards-solutions-container h3 {
+  color: var(--heading-color);
+}
+
+main .section.dark.cards-solutions-container p {
+  color: var(--text-color);
+}
+
+main .section.dark.cards-solutions-container a:any-link {
+  color: var(--link-color);
 }

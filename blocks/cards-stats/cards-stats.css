@@ -1,62 +1,57 @@
-/* cards-stats – stat-driven case study cards */
+/* cards-stats – stat-driven case study cards (Lumen style: no images, large stat numbers) */
 .cards-stats > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-m);
+  gap: var(--spacing-l);
 }
 
 .cards-stats > ul > li {
-  border-radius: 16px;
-  overflow: hidden;
-  background-color: var(--background-color);
-  border: 1px solid #e0e0e0;
-  transition: box-shadow var(--transition-base);
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
 }
 
-.cards-stats > ul > li:hover {
-  box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
-}
-
+/* hide card images – original Lumen stats section shows no images */
 .cards-stats .cards-stats-card-image {
-  line-height: 0;
-}
-
-.cards-stats .cards-stats-card-image img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+  display: none;
 }
 
 .cards-stats .cards-stats-card-body {
-  padding: var(--spacing-m);
+  padding: 0;
 }
 
-/* stat number – first <p> in card body */
+/* stat number – large display */
 .cards-stats .cards-stats-card-body > p:first-child {
   font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-xl);
+  font-size: var(--heading-font-size-xxl);
   font-weight: 700;
-  color: var(--accent-color);
+  color: var(--heading-color);
   line-height: 1;
-  margin: 0 0 var(--spacing-xs);
+  margin: 0 0 var(--spacing-s);
+  padding-bottom: var(--spacing-s);
+  border-bottom: 2px solid #e0e0e0;
 }
 
 .cards-stats .cards-stats-card-body h2 {
   font-size: var(--heading-font-size-s);
-  margin-top: 0;
+  font-weight: 700;
+  margin-top: var(--spacing-s);
   margin-bottom: var(--spacing-xs);
+  color: var(--heading-color);
 }
 
 .cards-stats .cards-stats-card-body > p:last-child a {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--link-color);
+  text-decoration: none;
 }
 
 .cards-stats .cards-stats-card-body > p:last-child a:hover {
-  color: var(--accent-color);
+  text-decoration: underline;
 }
 
 @media (width >= 600px) {
@@ -68,9 +63,5 @@
 @media (width >= 900px) {
   .cards-stats > ul {
     grid-template-columns: repeat(4, 1fr);
-  }
-
-  .cards-stats .cards-stats-card-body > p:first-child {
-    font-size: var(--heading-font-size-xxl);
   }
 }

@@ -1,4 +1,10 @@
-/* cards-industry – industry cards with intro header (used in dark sections) */
+/* cards-industry – industry cards with intro header */
+
+/* hide decorative image in section header */
+.cards-industry-container .default-content-wrapper p:has(img) {
+  display: none;
+}
+
 .cards-industry > ul {
   list-style: none;
   margin: 0;
@@ -45,12 +51,12 @@
 
 .cards-industry > ul > li:first-child .cards-industry-card-body h2 {
   font-size: var(--heading-font-size-xl);
-  color: #fff;
+  color: var(--heading-color);
   margin-top: 0;
 }
 
 .cards-industry > ul > li:first-child .cards-industry-card-body p {
-  color: rgb(255 255 255 / 85%);
+  color: var(--text-color);
 }
 
 /* hide empty image column on intro card */
@@ -58,17 +64,38 @@
   display: none;
 }
 
-/* regular industry cards */
+/* regular industry cards – horizontal layout with circular images */
 .cards-industry > ul > li:not(:first-child) {
   border-radius: 16px;
   overflow: hidden;
   background-color: var(--background-color);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-m);
+  padding: var(--spacing-m);
 }
 
 .cards-industry > ul > li:not(:first-child):hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
+}
+
+.cards-industry > ul > li:not(:first-child) .cards-industry-card-image {
+  flex: 0 0 auto;
+}
+
+.cards-industry > ul > li:not(:first-child) .cards-industry-card-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.cards-industry > ul > li:not(:first-child) .cards-industry-card-body {
+  padding: 0;
 }
 
 .cards-industry > ul > li:not(:first-child) .cards-industry-card-body h2 {
@@ -84,17 +111,47 @@
 
 @media (width >= 600px) {
   .cards-industry > ul {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (width >= 900px) {
   .cards-industry > ul {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-l);
   }
 
   .cards-industry > ul > li:first-child {
+    grid-column: 1;
+    grid-row: 1 / -1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
+
+  .cards-industry > ul > li:not(:first-child) .cards-industry-card-image img {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* stylelint-disable no-descending-specificity -- intentional: dark overrides must come after block styles */
+
+/* override dark section – original Lumen has light background */
+main .section.dark.cards-industry-container {
+  background-color: var(--light-color);
+  color: var(--text-color);
+}
+
+main .section.dark.cards-industry-container h1,
+main .section.dark.cards-industry-container h2,
+main .section.dark.cards-industry-container h3 {
+  color: var(--heading-color);
+}
+
+main .section.dark.cards-industry-container p {
+  color: var(--text-color);
+}
+
+main .section.dark.cards-industry-container a:any-link {
+  color: var(--link-color);
 }

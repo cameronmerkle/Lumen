@@ -183,6 +183,40 @@ a:hover {
   text-decoration: underline;
 }
 
+/* CTA arrow links – orange arrow style matching Lumen */
+.cta-link,
+.cards-stats .cards-stats-card-body > p:last-child a,
+.cards-support .cards-support-card-body p:last-child a,
+.cards-solutions .cards-solutions-card-body p:last-child a,
+.cards-industry .cards-industry-card-body p:last-child a,
+.tabs-industry .tabs-industry-panel[aria-hidden='false'] p:last-child a {
+  font-weight: 500;
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.cta-link::after,
+.cards-stats .cards-stats-card-body > p:last-child a::after,
+.cards-support .cards-support-card-body p:last-child a::after,
+.cards-solutions .cards-solutions-card-body p:last-child a::after,
+.cards-industry .cards-industry-card-body p:last-child a::after,
+.tabs-industry .tabs-industry-panel[aria-hidden='false'] p:last-child a::after {
+  content: " \2192";
+  color: #f95e4a;
+  margin-left: 6px;
+  transition: transform var(--transition-base);
+  display: inline-block;
+}
+
+.cta-link:hover::after,
+.cards-stats .cards-stats-card-body > p:last-child a:hover::after,
+.cards-support .cards-support-card-body p:last-child a:hover::after,
+.cards-solutions .cards-solutions-card-body p:last-child a:hover::after,
+.cards-industry .cards-industry-card-body p:last-child a:hover::after,
+.tabs-industry .tabs-industry-panel[aria-hidden='false'] p:last-child a:hover::after {
+  transform: translateX(4px);
+}
+
 /* buttons */
 p.button-wrapper {
   margin: 12px 0;
@@ -356,6 +390,7 @@ main .section.dark p {
   color: rgb(255 255 255 / 85%);
 }
 
+/* stylelint-disable-next-line no-descending-specificity -- intentional: dark section links after CTA scoped rules */
 main .section.dark a:any-link {
   color: #fff;
 }

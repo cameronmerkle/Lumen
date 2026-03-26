@@ -1,4 +1,11 @@
 /* tabs-industry – industry selector tabs */
+
+/* panel content paragraphs – base style before button overrides */
+.tabs-industry .tabs-industry-panel p {
+  color: rgb(255 255 255 / 85%);
+  margin-top: 0;
+}
+
 .tabs-industry .tabs-industry-list {
   display: flex;
   gap: 0;
@@ -52,16 +59,20 @@
   display: none;
 }
 
-/* panel content */
+/* panel content – dark teal case study area */
 .tabs-industry .tabs-industry-panel > div {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
+  background-color: var(--dark-color);
+  border-radius: 16px;
+  padding: var(--spacing-l);
+  color: #fff;
 }
 
 .tabs-industry .tabs-industry-panel img {
   width: 100%;
-  border-radius: 16px;
+  border-radius: 12px;
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
@@ -72,25 +83,28 @@
 
 .tabs-industry .tabs-industry-panel p:last-child a {
   font-weight: 600;
-  color: var(--link-color);
+  color: #fff;
 }
 
 .tabs-industry .tabs-industry-panel p:last-child a:hover {
-  color: var(--accent-color);
+  color: rgb(255 255 255 / 70%);
 }
 
 @media (width >= 900px) {
   .tabs-industry .tabs-industry-panel > div {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: var(--spacing-l);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xs) var(--spacing-l);
   }
 
+  /* image spans full left column */
   .tabs-industry .tabs-industry-panel > div > p:first-child {
-    flex: 0 0 50%;
+    grid-row: 1 / -1;
   }
 
   .tabs-industry .tabs-industry-panel img {
-    max-width: 50%;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 3 / 4;
   }
 }

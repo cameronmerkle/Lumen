@@ -1,4 +1,12 @@
 /* cards-support – support/resource cards with icons */
+
+/* section header styling */
+.cards-support-container .default-content-wrapper h2 {
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.25;
+  margin-bottom: var(--spacing-m);
+}
+
 .cards-support > ul {
   list-style: none;
   margin: 0;
@@ -12,7 +20,7 @@
   border-radius: 16px;
   overflow: hidden;
   background-color: var(--light-color);
-  padding: var(--spacing-m);
+  padding: var(--spacing-l) var(--spacing-m);
   transition: box-shadow var(--transition-base);
 }
 
@@ -22,7 +30,7 @@
 
 .cards-support .cards-support-card-image {
   line-height: 0;
-  margin-bottom: var(--spacing-s);
+  margin-bottom: var(--spacing-m);
 }
 
 .cards-support .cards-support-card-image img {
@@ -33,17 +41,25 @@
 
 .cards-support .cards-support-card-body h2 {
   font-size: var(--heading-font-size-s);
+  font-weight: 700;
   margin-top: 0;
   margin-bottom: var(--spacing-xs);
+  color: var(--heading-color);
+}
+
+.cards-support .cards-support-card-body p {
+  color: var(--text-color);
+  font-size: var(--body-font-size-s);
 }
 
 .cards-support .cards-support-card-body p:last-child a {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--link-color);
+  text-decoration: none;
 }
 
 .cards-support .cards-support-card-body p:last-child a:hover {
-  color: var(--accent-color);
+  text-decoration: underline;
 }
 
 @media (width >= 600px) {

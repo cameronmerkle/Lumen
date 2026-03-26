@@ -1,8 +1,28 @@
-/* cards-logos – partner/client logo grid */
+/* cards-logos – partner/client logo grid on teal background */
+
+/* teal background on the section containing logos */
+.cards-logos-container {
+  background-color: var(--accent-color);
+}
+
+.cards-logos-container > div {
+  text-align: center;
+}
+
+/* section heading – white, centered, large */
+.cards-logos-container > .default-content-wrapper:first-child p {
+  color: #fafafa;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
 .cards-logos > ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: var(--spacing-l) 0 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -29,13 +49,12 @@
   width: auto;
   height: 32px;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.6;
-  transition: filter var(--transition-base), opacity var(--transition-base);
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  transition: opacity var(--transition-base);
 }
 
 .cards-logos > ul > li:hover .cards-logos-card-image img {
-  filter: grayscale(0%);
   opacity: 1;
 }
 
@@ -44,7 +63,16 @@
   display: none;
 }
 
+/* hide duplicate default content after logo block */
+.cards-logos-container .cards-logos-wrapper ~ .default-content-wrapper {
+  display: none;
+}
+
 @media (width >= 900px) {
+  .cards-logos-container > .default-content-wrapper:first-child p {
+    font-size: var(--heading-font-size-xxl);
+  }
+
   .cards-logos .cards-logos-card-image img {
     height: 40px;
   }
